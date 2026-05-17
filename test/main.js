@@ -1,18 +1,17 @@
 // ESLint declarations:
 /* global describe */
-/* eslint one-var: 0, semi-style: 0 */
+/* - */
 
-'use strict';
 
 // -- Vendor Modules
 
 
 // -- Local Modules
-const Messenger      = require('../index')
-    , pack           = require('../package.json')
-    , testlib        = require('./int/lib')
-    , testsubandfire = require('./int/subandfire')
-    ;
+import Messenger from '../index.js';
+// import Messenger from '../lib/es6lib.mjs';
+import pack from '../package.json' with { type: 'json' };
+import testlib from './int/lib.js';
+import testsubandfire from './int/subandfire.js';
 
 
 // -- Local Constants
@@ -27,3 +26,6 @@ describe('Test Messenger:', () => {
   testlib(Messenger, libname, pack.version, 'without new');
   testsubandfire(Messenger);
 });
+
+
+// - oOo --

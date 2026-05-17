@@ -1,12 +1,12 @@
 /*! ****************************************************************************
- * Messenger v1.0.4
+ * Messenger v2.0.0-alpha.0.0
  *
  * A tiny Javascript library to handle messages that carry a payload.
  * (you can download it from npm or github repositories)
- * Copyright (c) 2024 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr).
+ * Copyright (c) 2026 Mobilabs <contact@mobilabs.fr> (https://www.mobilabs.fr).
  * Released under the MIT license. You may obtain a copy of the License
  * at: http://www.opensource.org/licenses/mit-license.php).
- * Built from ES6lib v2.1.1.
+ * Built from ES6lib v3.0.0-beta.1.3.
  * ************************************************************************** */
 // ESLint declarations
 /* global define */
@@ -23,11 +23,9 @@ const $__ES6GLOB = {};
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like environments that support module.exports,
     // like Node.
-    /* eslint-disable-next-line no-param-reassign */
     module.exports = factory(root);
   } else {
     // Browser globals.
-    /* eslint-disable-next-line no-param-reassign */
     root.Messenger = factory(root);
   }
   /* c8 ignore stop */
@@ -39,13 +37,91 @@ const $__ES6GLOB = {};
    * level of this module and are accessible to all. So, they are considered
    * as reserved words for this library.
    * ************************************************************************ */
-  /* eslint-disable one-var, no-unused-vars, semi-style */
+  /* - */
+  /* eslint-disable no-unused-vars */
 
   let Messenger
-    , TM
+    , extend
     ;
 
-  /* eslint-enable one-var, no-unused-vars, semi-style */
+  // Tree is an internal object that links all the internal modules.
+  const Tree = {
+    Messmethods: {
+      Public: {},
+    },
+  };
+
+  /* eslint-enable no-unused-vars */
+
+  /** **************************************************************************
+   *
+   * Provides the function 'extend' that is used to fill the object tree with
+   * the public static or object methods when the Javascript VM browses the
+   * library from the top to the bottom.
+   *
+   * extend.js is just a literal object that contains a set of functions.
+   * It can't be instantiated.
+   *
+   * Private Functions:
+   *  . none,
+   *
+   *
+   * Public Static Methods:
+   *  . extend                      extends the passed-in object with new methods,
+   *
+   *
+   *
+   * @namespace    -
+   * @dependencies none
+   * @exports      -
+   * @author       -
+   * @since        0.0.0
+   * @version      -
+   * ************************************************************************ */
+  /* - */
+  /* eslint-disable no-undef */
+
+  (function() {
+    // START OF IIFE
+
+
+    // -- Module Path
+
+
+    // -- Local Modules
+
+
+    // -- Local Constants
+
+
+    // -- Local Variables
+
+
+    // -- Public function ------------------------------------------------------
+
+    /**
+     * Extends the passed-in object with new methods.
+     *
+     * Nota: this function mutates object.
+     *
+     * @function (arg1, arg2)
+     * @private
+     * @param {Object}        the object to extend,
+     * @param {Object}        an object containing a set of methods,
+     * @returns {}            -,
+     * @since 0.0.0
+     */
+    extend = function(object, methods) {
+      const keys = Object.keys(methods);
+
+      for (let i = 0; i < keys.length; i++) {
+        object[keys[i]] = methods[keys[i]];
+      }
+    };
+
+    // END OF IIFE
+  }());
+  /* eslint-enable no-undef */
 
   /** **************************************************************************
    *
@@ -88,7 +164,7 @@ const $__ES6GLOB = {};
    * @version      -
    * ************************************************************************ */
   /* - */
-  /* eslint-disable one-var, semi-style, no-underscore-dangle */
+  /* eslint-disable no-undef */
 
   (function() {
     // START OF IIFE
@@ -98,18 +174,13 @@ const $__ES6GLOB = {};
 
 
     // -- Local Modules
+    const TM = Tree.Messmethods.Public;
 
 
     // -- Local Constants
-    // Saves the previous value of the library variable, so that it can be
-    // restored later on, if noConflict is used.
-    const previousMessenger = root.Messenger
-        ;
 
 
     // -- Local Variables
-    let methods
-      ;
 
 
     // -- Public ---------------------------------------------------------------
@@ -128,7 +199,7 @@ const $__ES6GLOB = {};
       const obj = Object.create(methods);
       obj._library = {
         name: 'Messenger',
-        version: '1.0.4',
+        version: '2.0.0-alpha.0.0',
       };
       // Initializes the message database to empty:
       obj._db = {};
@@ -137,7 +208,11 @@ const $__ES6GLOB = {};
 
     // Attaches constants to Messenger that provide name and version of the lib.
     Messenger.NAME = 'Messenger';
-    Messenger.VERSION = '1.0.4';
+    Messenger.VERSION = '2.0.0-alpha.0.0';
+
+    // Saves the previous value of the library variable, so that it can be
+    // restored later on, if noConflict is used.
+    const previousMessenger = root.Messenger;
 
 
     // -- Private Static Methods -----------------------------------------------
@@ -174,7 +249,6 @@ const $__ES6GLOB = {};
      * @since 0.0.0
      */
     Messenger.noConflict = function() {
-      /* eslint-disable-next-line no-param-reassign */
       root.Messenger = previousMessenger;
       return this;
     };
@@ -182,7 +256,7 @@ const $__ES6GLOB = {};
 
     // -- Public Methods -------------------------------------------------------
 
-    methods = {
+    const methods = {
 
       /**
        * Returns the library name and version.
@@ -261,14 +335,14 @@ const $__ES6GLOB = {};
 
     // END OF IIFE
   }());
-  /* eslint-enable one-var, semi-style, no-underscore-dangle */
+  /* eslint-enable no-undef */
 
   /** **************************************************************************
    *
    * Implements the Messenger methods.
    *
-   * messenger.js is just a literal object that contains a set of functions. It
-   * can't be intantiated.
+   * messenger.js is just a literal object that contains a set of functions.
+   * It can't be instantiated.
    *
    * Private Functions:
    *  . _schema                     returns the event db schema,
@@ -278,10 +352,6 @@ const $__ES6GLOB = {};
    *  . _unsubscribe                removes an event listener,
    *  . _subscribeOnce              adds an event listener that is fired once,
    *  . _subscribe                  adds an event listener,
-   *
-   *
-   * Private Static Methods:
-   *  . none,
    *
    *
    * Public Static Methods:
@@ -299,13 +369,15 @@ const $__ES6GLOB = {};
    * @since        0.0.0
    * @version      -
    * ************************************************************************ */
-  /* eslint-disable one-var, semi-style, no-underscore-dangle */
+  /* - */
+  /* - */
 
   (function() {
     // START OF IIFE
 
 
     // -- Module Path
+    const Root = Tree.Messmethods.Public;
 
 
     // -- Local Modules
@@ -346,7 +418,6 @@ const $__ES6GLOB = {};
      */
     function _add(db, e) {
       if (!Object.prototype.hasOwnProperty.call(db, e)) {
-        /* eslint-disable-next-line no-param-reassign */
         db[e] = _schema();
       }
     }
@@ -466,7 +537,7 @@ const $__ES6GLOB = {};
 
     // -- Public Static Methods ------------------------------------------------
 
-    TM = {
+    extend(Root, {
 
       /**
        * Adds an event listener.
@@ -527,11 +598,11 @@ const $__ES6GLOB = {};
       publish(db, event, payload) {
         _publish(db, event, payload);
       },
-    };
+    });
 
     // END OF IIFE
   }());
-  /* eslint-enable one-var, semi-style, no-underscore-dangle */
+  /* - */
 
   // Returns the library name:
   return Messenger;

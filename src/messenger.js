@@ -38,10 +38,8 @@
  * @since        0.0.0
  * @version      -
  * ************************************************************************ */
-/* global TM, root */
-/* eslint-disable one-var, semi-style, no-underscore-dangle */
-
-'use strict';
+/* global Tree, root */
+/* eslint-disable no-undef */
 
 (function() {
   // START OF IIFE
@@ -51,18 +49,13 @@
 
 
   // -- Local Modules
+  const TM = Tree.Messmethods.Public;
 
 
   // -- Local Constants
-  // Saves the previous value of the library variable, so that it can be
-  // restored later on, if noConflict is used.
-  const previousMessenger = root.Messenger
-      ;
 
 
   // -- Local Variables
-  let methods
-    ;
 
 
   // -- Public ---------------------------------------------------------------
@@ -91,6 +84,10 @@
   // Attaches constants to Messenger that provide name and version of the lib.
   Messenger.NAME = '{{lib:name}}';
   Messenger.VERSION = '{{lib:version}}';
+
+  // Saves the previous value of the library variable, so that it can be
+  // restored later on, if noConflict is used.
+  const previousMessenger = root.Messenger;
 
 
   // -- Private Static Methods -----------------------------------------------
@@ -127,7 +124,6 @@
    * @since 0.0.0
    */
   Messenger.noConflict = function() {
-    /* eslint-disable-next-line no-param-reassign */
     root.Messenger = previousMessenger;
     return this;
   };
@@ -135,7 +131,7 @@
 
   // -- Public Methods -------------------------------------------------------
 
-  methods = {
+  const methods = {
 
     /**
      * Returns the library name and version.
@@ -214,4 +210,4 @@
 
   // END OF IIFE
 }());
-/* eslint-enable one-var, semi-style, no-underscore-dangle */
+/* eslint-enable no-undef */

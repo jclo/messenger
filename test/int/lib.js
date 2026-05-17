@@ -1,12 +1,10 @@
 // ESLint declarations:
 /* global describe, it */
-/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0 */
+/* - */
 
-'use strict';
 
 // -- Vendor Modules
-const { expect } = require('chai')
-    ;
+import { expect } from 'chai';
 
 
 // -- Local Modules
@@ -27,7 +25,7 @@ const LIBPROPS = 0
 
 
 // -- Main
-module.exports = function(Messenger, libname, version, type) {
+export default function(Messenger, libname, version, type) {
   describe('Messenger introspection:', () => {
     describe('Test the nature of Messenger:', () => {
       it('Expects Messenger to be a function.', () => {
@@ -75,7 +73,7 @@ module.exports = function(Messenger, libname, version, type) {
           // it('Expects Messenger to own the property ... to be completed or ... removed!', () => {
           //   expect(true).to.be.equal(true);
           // });
-          //
+
           // describe('Test the owned specific custom properties:', () => {
           //   it('Expects Messenger the property ... to be completed or ... removed!', () => {
           //     expect(true).to.be.equal(true);
@@ -118,12 +116,14 @@ module.exports = function(Messenger, libname, version, type) {
         });
 
         describe('Test the owned generic properties:', () => {
-          it('Expects Messenger object to own the property "_db" that is an object.', () => {
-            expect(o).to.own.property('_db').that.is.an('object');
+          it('Expects the property "_library" to own two properties.', () => {
+            expect(Object.keys(o._library)).to.be.an('array').that.has.lengthOf(2);
           });
-
-          describe('Test the owned specific properties:', () => {
-            // none,
+          it(`Expects the property "_library" to own the property "name" whose value is "${libname}".`, () => {
+            expect(o._library).to.own.property('name').that.is.equal(libname);
+          });
+          it(`Expects the property "_library" to own the property "version" whose value is "${version}".`, () => {
+            expect(o._library).to.own.property('version').that.is.equal(version);
           });
         });
 
@@ -135,8 +135,8 @@ module.exports = function(Messenger, libname, version, type) {
             expect(o).to.own.property('_db').that.is.an('object');
           });
 
-          describe('Test the owned specific properties:', () => {
-            // none,
+          describe('Test the owned specific custom properties:', () => {
+            // none
           });
         });
       });
@@ -191,11 +191,12 @@ module.exports = function(Messenger, libname, version, type) {
         });
 
         describe('Test the inherited specific properties:', () => {
-          // it('Expects the property "getString" to return the string "I am a string!".', () => {
-          //   expect(o.getString()).to.be.a('string').that.is.equal('I am a string!');
-          // });
+          // none
         });
       });
     });
   });
 };
+
+
+// - oOo --

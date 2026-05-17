@@ -1,3 +1,2 @@
-'use strict';
-
-module.exports = require('./lib/messenger');
+import Messenger from './lib/messenger.mjs';
+export default Messenger;

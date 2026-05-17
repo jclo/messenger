@@ -1,6 +1,12 @@
 ### HEAD
 
 
+### 2.0.0 (May 17, 2026)
+
+  * Updated the project with @mobilabs/es6lib ESM v3,
+  * ...,
+
+
 ### 1.0.4 (January 25, 2024)
 
   * Updated the project with @mobilabs/es6kadoo v2.1 (no Gulp, Github Actions),

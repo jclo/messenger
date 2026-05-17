@@ -2,8 +2,8 @@
  *
  * Implements the Messenger methods.
  *
- * messenger.js is just a literal object that contains a set of functions. It
- * can't be intantiated.
+ * messenger.js is just a literal object that contains a set of functions.
+ * It can't be instantiated.
  *
  * Private Functions:
  *  . _schema                     returns the event db schema,
@@ -13,10 +13,6 @@
  *  . _unsubscribe                removes an event listener,
  *  . _subscribeOnce              adds an event listener that is fired once,
  *  . _subscribe                  adds an event listener,
- *
- *
- * Private Static Methods:
- *  . none,
  *
  *
  * Public Static Methods:
@@ -34,15 +30,15 @@
  * @since        0.0.0
  * @version      -
  * ************************************************************************ */
-/* eslint-disable one-var, semi-style, no-underscore-dangle */
-
-'use strict';
+/* global Tree, extend */
+/* - */
 
 (function() {
   // START OF IIFE
 
 
   // -- Module Path
+  const Root = Tree.Messmethods.Public;
 
 
   // -- Local Modules
@@ -83,7 +79,6 @@
    */
   function _add(db, e) {
     if (!Object.prototype.hasOwnProperty.call(db, e)) {
-      /* eslint-disable-next-line no-param-reassign */
       db[e] = _schema();
     }
   }
@@ -203,7 +198,7 @@
 
   // -- Public Static Methods ------------------------------------------------
 
-  TM = {
+  extend(Root, {
 
     /**
      * Adds an event listener.
@@ -264,8 +259,8 @@
     publish(db, event, payload) {
       _publish(db, event, payload);
     },
-  };
+  });
 
   // END OF IIFE
 }());
-/* eslint-enable one-var, semi-style, no-underscore-dangle */
+/* - */

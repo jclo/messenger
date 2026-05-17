@@ -3,3 +3,4 @@ _old_*
 
 coverage
 node_modules
+.npmrc

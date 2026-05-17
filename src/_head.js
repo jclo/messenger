@@ -3,12 +3,18 @@
  * level of this module and are accessible to all. So, they are considered
  * as reserved words for this library.
  * ************************************************************************ */
-/* eslint-disable one-var, no-unused-vars, semi-style */
-
-'use strict';
+/* global */
+/* eslint-disable no-unused-vars */
 
 let Messenger
-  , TM
+  , extend
   ;
 
-/* eslint-enable one-var, no-unused-vars, semi-style */
+// Tree is an internal object that links all the internal modules.
+const Tree = {
+  Messmethods: {
+    Public: {},
+  },
+};
+
+/* eslint-enable no-unused-vars */
