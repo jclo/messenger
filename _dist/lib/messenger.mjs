@@ -1,5 +1,5 @@
 /*! ****************************************************************************
- * Messenger v2.0.0
+ * Messenger v2.1.0
  *
  * A tiny Javascript library to handle messages that carry a payload.
  * (you can download it from npm or github repositories)
@@ -199,7 +199,7 @@ const $__ES6GLOB = {};
       const obj = Object.create(methods);
       obj._library = {
         name: 'Messenger',
-        version: '2.0.0',
+        version: '2.1.0',
       };
       // Initializes the message database to empty:
       obj._db = {};
@@ -208,7 +208,7 @@ const $__ES6GLOB = {};
 
     // Attaches constants to Messenger that provide name and version of the lib.
     Messenger.NAME = 'Messenger';
-    Messenger.VERSION = '2.0.0';
+    Messenger.VERSION = '2.1.0';
 
     // Saves the previous value of the library variable, so that it can be
     // restored later on, if noConflict is used.

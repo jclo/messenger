@@ -3,7 +3,7 @@
 ### 2.1.0 (May 21, 2026)
 
   * Added publishing and documenting scripts to package.json,
-  * ...
+  * Release.
 
 
 ### 2.0.0 (May 17, 2026)
