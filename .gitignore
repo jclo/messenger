@@ -4,3 +4,4 @@ _old_*
 coverage
 node_modules
 .npmrc
+package.publish.json
